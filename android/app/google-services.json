@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1000805816350",
+    "project_id": "vsjfirebase",
+    "storage_bucket": "vsjfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000805816350:android:99657fcce2d7360b21b60f",
+        "android_client_info": {
+          "package_name": "com.blogspot.varanasisoftwarejunction.vsjfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1000805816350-prrf43g4t2a9d4sa1sjfj3efspknpfu7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoIIIfY2hxgKnn3lrtMdWQMlDX57DRjgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1000805816350-prrf43g4t2a9d4sa1sjfj3efspknpfu7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
