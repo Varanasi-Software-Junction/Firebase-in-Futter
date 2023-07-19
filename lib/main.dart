@@ -75,7 +75,10 @@ class _FirebaseDemoState extends State<FirebaseDemo> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              ElevatedButton(onPressed: () {}, child: Text("sign in"))
+              ElevatedButton(onPressed: ()async {
+                await VsjGoogleSignIn.doSignIn();
+
+              }, child: Text("sign in"))
             ],
           ),
         ),
