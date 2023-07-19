@@ -10,13 +10,13 @@ class VsjGoogleSignIn {
   static final GoogleSignIn _googleSignIn = GoogleSignIn();
 
 //********************Define the google sign in object
-  static Future<String> doSignIn() async
+  static Future<dynamic> doSignIn() async
   {
     try {
-      final GoogleSignInAccount googleSignInAccount =
+      final GoogleSignInAccount? googleSignInAccount =
       await _googleSignIn.signIn();
       final GoogleSignInAuthentication googleSignInAuthentication =
-      await googleSignInAccount.authentication;
+      await googleSignInAccount!.authentication;
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleSignInAuthentication.accessToken,
         idToken: googleSignInAuthentication.idToken,
@@ -25,6 +25,7 @@ class VsjGoogleSignIn {
     }
     on FirebaseAuthException catch (ex) {
       print(ex.message);
+
       throw ex;
     }
   }
