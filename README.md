@@ -1,4 +1,4 @@
-# vsjfirebase
+Using Firebase in Flutter
 
 https://firebase.google.com/docs/flutter/setup?platform=android
 
