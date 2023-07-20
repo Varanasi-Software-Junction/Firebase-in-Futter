@@ -60,7 +60,7 @@ class _FirebaseDemoState extends State<FirebaseDemo> {
   //*****************************************************************************
 
   String loginfo = "Varanasi Software Junction";
-
+  String data = "";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -75,10 +75,24 @@ class _FirebaseDemoState extends State<FirebaseDemo> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              ElevatedButton(onPressed: ()async {
-                await VsjGoogleSignIn.doSignIn();
-
-              }, child: Text("sign in"))
+              Text(data),
+              ElevatedButton(
+                  onPressed: () async {
+                    await VsjGoogleSignIn.doSignIn();
+                  },
+                  child: const Text("sign in")),
+              ElevatedButton(
+                  onPressed: () async {
+                    await VsjGoogleSignIn.doSignOut();
+                    User? user = VsjGoogleSignIn.getUser();
+                    if (user == null) {
+                      data = "null";
+                    } else {
+                      data = user.displayName!;
+                    }
+                    setState(() {});
+                  },
+                  child: const Text("sign out"))
             ],
           ),
         ),
