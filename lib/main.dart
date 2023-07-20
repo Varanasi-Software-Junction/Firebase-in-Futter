@@ -78,12 +78,16 @@ class _FirebaseDemoState extends State<FirebaseDemo> {
               Text(data),
               ElevatedButton(
                   onPressed: () async {
-                    await VsjGoogleSignIn.doSignIn();
-                    User? user = VsjGoogleSignIn.getUser();
-                    if (user == null) {
-                      data = "null";
-                    } else {
-                      data = user.displayName!;
+                    try {
+                      await VsjGoogleSignIn.doSignIn();
+                      User? user = await VsjGoogleSignIn.getUser();
+                      if (user == null) {
+                        data = "null";
+                      } else {
+                        data = user.displayName!;
+                      }
+                    } catch (ex) {
+                      data = ex.toString();
                     }
                     setState(() {});
                   },
