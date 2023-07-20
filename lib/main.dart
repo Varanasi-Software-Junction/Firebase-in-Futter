@@ -79,11 +79,6 @@ class _FirebaseDemoState extends State<FirebaseDemo> {
               ElevatedButton(
                   onPressed: () async {
                     await VsjGoogleSignIn.doSignIn();
-                  },
-                  child: const Text("sign in")),
-              ElevatedButton(
-                  onPressed: () async {
-                    await VsjGoogleSignIn.doSignOut();
                     User? user = VsjGoogleSignIn.getUser();
                     if (user == null) {
                       data = "null";
@@ -91,6 +86,11 @@ class _FirebaseDemoState extends State<FirebaseDemo> {
                       data = user.displayName!;
                     }
                     setState(() {});
+                  },
+                  child: const Text("sign in")),
+              ElevatedButton(
+                  onPressed: () async {
+                    await VsjGoogleSignIn.doSignOut();
                   },
                   child: const Text("sign out"))
             ],
