@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1000805816350-2ig99c1bo66rlshj0jq2per2e5hrq6t7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.blogspot.varanasisoftwarejunction.vsjfirebase",
+            "certificate_hash": "9a7bf030debfaa515d46fad36e8e61c4fa947f36"
+          }
+        },
+        {
           "client_id": "1000805816350-prrf43g4t2a9d4sa1sjfj3efspknpfu7.apps.googleusercontent.com",
           "client_type": 3
         }
