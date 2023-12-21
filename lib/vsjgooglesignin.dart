@@ -3,12 +3,39 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:vsjfirebase/utilities.dart';
 
 class VsjGoogleSignIn {
   //********************Define the google sign in object
   static final FirebaseAuth _auth = FirebaseAuth.instance;
   static final GoogleSignIn _googleSignIn = GoogleSignIn();
 
+  //***********************Phone Sign-In************************
+static Future<dynamic> doPhoneSignIn()async
+{
+  FirebaseAuth auth = FirebaseAuth.instance;
+
+
+
+  await auth.verifyPhoneNumber(
+    phoneNumber: '+91 ${AuthUtilies.phoneno.text}',
+    timeout: Duration(seconds:60),
+    verificationCompleted: (PhoneAuthCredential credential) async {
+      // ANDROID ONLY!
+
+      // Sign the user in (or link) with the auto-generated credential
+      await auth.signInWithCredential(credential);
+    }, verificationFailed: (FirebaseAuthException error) {  },
+    codeSent: (String verificationId, [int? forceResendingToken]) {
+      print("Code sent");
+    },
+    codeAutoRetrievalTimeout: (String verificationId) {
+      print("Timed Out");
+    },
+  );
+}
+
+  //***********************Phone Sign-In************************
 //********************Define the google sign in object
   static Future<dynamic> doSignIn() async {
     try {
