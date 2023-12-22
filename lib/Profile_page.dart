@@ -15,10 +15,20 @@ class _Profile_PageState extends State<Profile_Page> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        leading: InkWell(child: Icon(Icons.arrow_back,color: Colors.black,),
+            onTap: (){
+              Navigator.pop(context);
+            }
+        ),
+        elevation: 0,
+        backgroundColor: Colors.white,
       ),
-      body: SafeArea(child:  Column(
+      body: SafeArea(
+        child:  Column(
         children: [
+          SizedBox(
+            height: 50,
+          ),
           const Center(child: Text("Please Select Your Profile",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black),)),
           const SizedBox(
             height: 20,
@@ -59,7 +69,7 @@ class _Profile_PageState extends State<Profile_Page> {
                           height: 10,
                         ),
                         SizedBox(
-                            width: 300,
+                            width: 200,
                             child: Text("Loream aset doller if you have any update about this app please contact our service and company",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color:Colors.grey),))
                       ],
                     )
@@ -107,7 +117,7 @@ class _Profile_PageState extends State<Profile_Page> {
                           height: 10,
                         ),
                         SizedBox(
-                            width: 300,
+                            width: 200,
                             child: Text("Loream aset doller if you have any update about this app please contact our service and company",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color:Colors.grey),))
                       ],
                     )

@@ -44,11 +44,15 @@ class _Conform_verifitation_pageState extends State<Conform_verifitation_page> {
     );
     return Scaffold(
       appBar: AppBar(
-        // leading: Icon(Icons.arrow_outward,color: Colors.black,),
-        // backgroundColor: Colors.white,
-
+        leading: InkWell(child: Icon(Icons.arrow_back,color: Colors.black,),
+            onTap: (){
+              Navigator.pop(context);
+            }
+        ),
+        elevation: 0,
+        backgroundColor: Colors.white,
       ),
-      body: SafeArea(
+          body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(top: 100),
           child: Center(
@@ -59,7 +63,7 @@ class _Conform_verifitation_pageState extends State<Conform_verifitation_page> {
                 const SizedBox(
                   height: 10,
                 ),
-                const Text("Code is sent to 80895053426",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.grey),),
+                 Text("Code is sent to ${AuthUtilies.phoneno.text}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.grey),),
                 const SizedBox(
                   height: 30,
                 ),
@@ -177,8 +181,11 @@ class _Conform_verifitation_pageState extends State<Conform_verifitation_page> {
 
                       ),
                       onTap: () {
-
-                        Navigator.pushNamed(context, '/Profile_Page');
+                        if (pinController.text.isEmpty) {
+                          print('jjjjj');
+                        }else {
+                          Navigator.pushNamed(context, '/Profile_Page');
+                        }
                       },
                     )
 

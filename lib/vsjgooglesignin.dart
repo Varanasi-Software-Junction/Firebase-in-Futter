@@ -11,21 +11,23 @@ class VsjGoogleSignIn {
   static final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   //***********************Phone Sign-In************************
-static Future<dynamic> doPhoneSignIn()async
+static Future<UserCredential?> doPhoneSignIn()async
 {
   FirebaseAuth auth = FirebaseAuth.instance;
 
 
 
-  await auth.verifyPhoneNumber(
+ await auth.verifyPhoneNumber(
     phoneNumber: '+91 ${AuthUtilies.phoneno.text}',
     timeout: Duration(seconds:60),
     verificationCompleted: (PhoneAuthCredential credential) async {
       // ANDROID ONLY!
 
       // Sign the user in (or link) with the auto-generated credential
-      await auth.signInWithCredential(credential);
-    }, verificationFailed: (FirebaseAuthException error) {  },
+   return  await Future(() =>  auth.signInWithCredential(credential));
+    }, verificationFailed: (FirebaseAuthException error) {
+      return null;
+ },
     codeSent: (String verificationId, [int? forceResendingToken]) {
       print("Code sent");
     },
@@ -33,6 +35,7 @@ static Future<dynamic> doPhoneSignIn()async
       print("Timed Out");
     },
   );
+ return null;
 }
 
   //***********************Phone Sign-In************************

@@ -25,13 +25,21 @@ class _Verify_Number_PageState extends State<Verify_Number_Page> {
 
   _FirebaseDemoState() {}
   String firebasedata = "data";
-  String data="";
+  String data = "hii";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        //leading: Icon(Icons.a,color: Colors.black,),
+        leading: InkWell(
+            child: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            }),
+        elevation: 0,
         backgroundColor: Colors.white,
       ),
       body: SafeArea(
@@ -40,6 +48,7 @@ class _Verify_Number_PageState extends State<Verify_Number_Page> {
           child: Center(
             child: Column(
               children: [
+                Text(data),
                 const Text(
                   "Please Enter Your Phone Number",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -122,13 +131,19 @@ class _Verify_Number_PageState extends State<Verify_Number_Page> {
                         ),
                       ),
                       onTap: () async {
-                        User? user = await VsjGoogleSignIn.doPhoneSignIn();
-                        if (user == null)
-                          data = "";
-                        else
-                          data = user.phoneNumber!;
-                        setState(() {});
-                         Navigator.pushNamed(context, '/Conform_verifitation_page');
+                        if (AuthUtilies.phoneno.text.isEmpty) {
+                          print('jjjjj');
+                        } else {
+                          UserCredential? user = await VsjGoogleSignIn.doPhoneSignIn();
+                          print("User${user}");
+                          if (user == null)
+                            data = "nULL verify";
+                          else
+                            data = user!.user!.phoneNumber!;
+                          setState(() {});
+                          Navigator.pushNamed(
+                              context, '/Conform_verifitation_page');
+                        }
                       },
                     )
                   ],
